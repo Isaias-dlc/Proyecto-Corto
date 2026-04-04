@@ -1,39 +1,58 @@
-#include <iostream>
-using namespace std;
-	
-	int main() {
-		int opciones;	
+#include <stdio.h>
+
+void torre(int filas[]){
+	int i = 0;
+	printf("\n");
+	while(i < 3){
+		printf("Fila %i: ", i + 1);
+		int j = 0;		
 		
-		while(1){
-			printf("Seleccione una de las siguientes opciones:\n\n1. Iniciar juego\n2. Intrucciones\n3. Salir del juego\n\n");
-			scanf("%i",&opciones);
-			if (opciones == 1){
-				char jugador1[20], jugador2[20];
-				int filas[3] = {3,5,7};
-				printf("\nJuego iniciado!\nIngrese el nombre del jugador 1: ");
-				scanf("%s",jugador1);
-				printf("Ingrese el nombre del jugador 2: ");
-				scanf("%s",jugador2);
-				
-				// Funciones para ejecutar el juego
-				
-			}else if(opciones == 2){
-				
-				printf("Instrucciones:\n");
-				printf("1. Juegan 2 personas un turno a la vez.\n");
-				printf("2. Existen tres filas de objetos (fichas, palillos, etc). La primera fila contiene 3 elementos, la segunda 5 y la tercera 7.\n");
-				printf("3. En el turno de un jugador este puede retirar cualquier cantidad de objetos dentro de una misma fila.\n");
-				printf("4. El jugador que se quede con el unico objeto restante pierde.\n\n");
-				
-			}else if (opciones == 3){
-				
-				printf("Juego finalizado!\n");
-				break;
-				
-			}else{
-				printf("Ingrese un dato v?lido");
-			}
+		while(j < filas[i]){
+			printf("|");
+			j++;
 		}
-		return 0;
+
+		printf("(%i)", filas[i]);
+		printf("\n");
+		i++;
+	}
+	printf("\n\n");
 }
 
+int main(int argc, char *argv[]) {
+	int opciones;	
+	
+	while(1){
+		printf("Seleccione una de las siguientes opciones:\n\n1. Iniciar juego\n2. Intrucciones\n3. Salir del juego\n\n");
+		scanf("%i",&opciones);
+		if (opciones == 1){
+			char jugador1[20], jugador2[20];
+			int filas[3] = {3,5,7};
+			printf("\nJuego iniciado!\nIngrese el nombre del jugador 1: ");
+			scanf("%s",jugador1);
+			printf("Ingrese el nombre del jugador 2: ");
+			scanf("%s",jugador2);
+			
+			while(filas[0] + filas[1] + filas[2] > 1){
+				torre(filas);
+			}
+			
+		}else if(opciones == 2){
+			
+			printf("Instrucciones:\n");
+			printf("1. Juegan 2 personas un turno a la vez.\n");
+			printf("2. Existen tres filas de objetos (fichas, palillos, etc). La primera fila contiene 3 elementos, la segunda 5 y la tercera 7.\n");
+			printf("3. En el turno de un jugador este puede retirar cualquier cantidad de objetos dentro de una misma fila.\n");
+			printf("4. El jugador que se quede con el unico objeto restante pierde.\n\n");
+		
+		}else if (opciones == 3){
+		
+			printf("Juego finalizado!\n");
+			break;
+		
+		}else{
+			printf("Ingrese un dato v�lido");
+		}
+	}
+	return 0;
+}
