@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdbool.h>
 
 void torre(int filas[]){
 	int i = 0;
@@ -19,6 +20,40 @@ void torre(int filas[]){
 	printf("\n\n");
 }
 
+void turnos(bool *turno, char jugador1[20], char jugador2[20]){
+	if(*turno){
+		printf("\nTurno de: %s\n", jugador1);
+	}else{
+		printf("\nTurno de: %s\n", jugador2);
+	}
+		
+	*turno = !(*turno);
+}
+
+void puntos(){
+	int puntosjugador1 = 0;
+	int puntosjugador2 = 0;
+}
+
+void quitarPalitos(int filas[],bool *turno){		
+	int fila;
+	int cantidad;
+	printf("Seleccione la fila (1-3): ");
+	scanf("%i", &fila);
+	printf("Cuantos palitos desea retirar: ");
+	scanf("%i", &cantidad);
+		
+	if(fila < 1 || fila > 3){
+		printf("\nFila invalida\n");
+		*turno = !(*turno);
+	}else if(cantidad < 1 || cantidad > filas[fila-1]){
+		printf("\nCantidad invalida\n");
+		*turno = !(*turno);
+	}else{
+		filas[fila-1] -= cantidad;
+	}
+}
+
 int main(int argc, char *argv[]) {
 	int opciones;	
 	
@@ -26,6 +61,7 @@ int main(int argc, char *argv[]) {
 		printf("Seleccione una de las siguientes opciones:\n\n1. Iniciar juego\n2. Intrucciones\n3. Salir del juego\n\n");
 		scanf("%i",&opciones);
 		if (opciones == 1){
+			bool turno = true;
 			char jugador1[20], jugador2[20];
 			int filas[3] = {3,5,7};
 			printf("\nJuego iniciado!\nIngrese el nombre del jugador 1: ");
@@ -34,7 +70,9 @@ int main(int argc, char *argv[]) {
 			scanf("%s",jugador2);
 			
 			while(filas[0] + filas[1] + filas[2] > 1){
+				turnos(&turno, jugador1,jugador2);
 				torre(filas);
+				quitarPalitos(filas,&turno);
 			}
 			
 		}else if(opciones == 2){
@@ -55,4 +93,4 @@ int main(int argc, char *argv[]) {
 		}
 	}
 	return 0;
-}
+}7
