@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdbool.h>
 
-void creartorre(int fila1, int fila2, int fila3){
+void crear_torre(int fila1, int fila2, int fila3){
     printf("Fila 1: ");
     for(int i = 0; i < fila1; i++) printf("|");
     printf(" (%d)\n", fila1);
@@ -41,16 +41,13 @@ int main(){
                 printf("Nombre jugador 2: ");
                 scanf("%s", jugador2);
 
-                int fila1, fila2, fila3;
+                int fila1 = 3, fila2 = 5, fila3 = 7;
                 bool turno = true;
                 int fila, cantidad, revancha;
 
-                fila1 = 3; fila2 = 5; fila3 = 7;
-
                 while(1){
                     printf("\nEstado actual:\n");
-                    creartorre(fila1, fila2, fila3);
-
+                    crear_torre(fila1, fila2, fila3);
                     turnos(turno, jugador1, jugador2);
 
                     // Verificar empate (no hay movimientos)
@@ -86,22 +83,19 @@ int main(){
                             continue;
                         }
                         fila1 -= cantidad;
-                    }
-                    else if(fila == 2){
+                    }else if(fila == 2){
                         if(cantidad > fila2 || cantidad <= 0){
                             printf("Movimiento inválido\n");
                             continue;
                         }
                         fila2 -= cantidad;
-                    }
-                    else if(fila == 3){
+                    }else if(fila == 3){
                         if(cantidad > fila3 || cantidad <= 0){
                             printf("Movimiento inválido\n");
                             continue;
                         }
                         fila3 -= cantidad;
-                    }
-                    else{
+                    }else{
                         printf("Fila inválida\n");
                         continue;
                     }
@@ -122,12 +116,11 @@ int main(){
                 if(revancha == 1){
                     continue;
                 }
-
                 break;
             }
 
             case 2:
-                printf("\n--- INSTRUCCIONES ---\n");
+                printf("\nIntrucciones:\n");
                 printf("1. Dos jugadores se turnan.\n");
                 printf("2. Hay 3 filas: 3, 5 y 7 palillos.\n");
                 printf("3. Se elige una fila y cuántos quitar.\n");
@@ -137,6 +130,7 @@ int main(){
 
             default:
                 printf("Opción inválida\n");
+                break;
         }
     }
 

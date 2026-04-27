@@ -102,9 +102,9 @@ gcc proyecto.c -o proyecto
 
 ## Integrantes
 
-* Obed Isaías De León Carrillo
-* Nombre 2
-* Nombre 3
+* Obed Isaías De León Carrillo   202608032
+* Pedro José Ajanel Velasquez    202608029
+* Francisco Javier Puac Rivera   202408030
 
 ---
 
