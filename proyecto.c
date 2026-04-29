@@ -35,7 +35,8 @@ int main(){
         if(opcion == 3) break;
 
         switch(opcion){
-            case 1:{
+            case 1: 
+            {
                 printf("Nombre jugador 1: ");
                 scanf("%s", jugador1);
                 printf("Nombre jugador 2: ");
@@ -50,7 +51,6 @@ int main(){
                     crear_torre(fila1, fila2, fila3);
                     turnos(turno, jugador1, jugador2);
 
-                    // Verificar empate (no hay movimientos)
                     if(fila1 == 0 && fila2 == 0 && fila3 == 0){
                         printf("\nEmpate, no hay movimientos disponibles.\n");
                         punteo1 += 1;
@@ -58,7 +58,6 @@ int main(){
                         break;
                     }
 
-                    // Verificar si queda 1 objeto
                     if(fila1 + fila2 + fila3 == 1){
                         if(turno){
                             printf("\n%s pierde. Gana %s\n", jugador1, jugador2);

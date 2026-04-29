@@ -51,7 +51,6 @@ int main(){
 
                     turnos(turno, jugador1, jugador2);
 
-                    // Empate
                     if(fila1 == 0 && fila2 == 0 && fila3 == 0){
                         cout << "\nEmpate, no hay movimientos disponibles.\n";
                         punteo1 += 1;
@@ -59,7 +58,6 @@ int main(){
                         break;
                     }
 
-                    // Si queda 1 objeto → pierde
                     if(fila1 + fila2 + fila3 == 1){
                         if(turno){
                             cout << "\n" << jugador1 << " pierde. Gana " << jugador2 << endl;
@@ -124,7 +122,7 @@ int main(){
             }
 
             case 2:
-                cout << "\n--- INSTRUCCIONES ---\n";
+                cout << "\nInstrucciones: \n";
                 cout << "1. Dos jugadores se turnan.\n";
                 cout << "2. Hay 3 filas: 3, 5 y 7 palillos.\n";
                 cout << "3. Se elige una fila y cuantos quitar.\n";
